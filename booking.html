@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#FAF6F0">
+<title>Book Your Moment | VELORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--cream:#FAF6F0;--white:#FFFDF9;--pink:#C88F98;
+--blush:#F2DFE1;--dark:#483439;--gold:#C6A477;
+--muted:#86787A;--ease:cubic-bezier(.22,1,.36,1)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--dark);font-family:Tajawal,sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+.container{width:min(1240px,90%);margin:auto}
+.eyebrow{font:700 11px "DM Sans",sans-serif;letter-spacing:.22em;color:var(--pink)}
+.serif{font-family:"Playfair Display",serif}
+.btn{border:1px solid var(--dark);background:var(--dark);color:white;padding:15px 25px;font-weight:700;transition:.3s}
+.btn:hover{background:var(--pink);border-color:var(--pink)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* HEADER */
+header{position:relative;z-index:20;background:var(--cream);border-bottom:1px solid #48343918}
+.nav{min-height:80px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{font:400 31px "Playfair Display",serif;letter-spacing:.05em}
+.brand span{color:var(--pink)}
+.navlinks{display:flex;gap:27px;align-items:center}
+.navlinks a{font-weight:700;font-size:14px}
+.navlinks a:hover{color:var(--pink)}
+.nav-actions{display:flex;gap:12px;align-items:center}
+.lang{background:none;border:0;font:700 12px "DM Sans",sans-serif;padding:10px;color:var(--dark)}
+.menu{display:none;border:0;background:none;font-size:25px;color:var(--dark)}
+
+/* MAIN */
+.booking-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);min-height:calc(100svh - 80px)}
+.visual{position:relative;min-height:750px;background:var(--dark);overflow:hidden}
+.visual-image{position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1300&q=85&auto=format&fit=crop") center/cover;animation:zoom 5s ease-out both}
+@keyframes zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+.visual:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#26191ED9,transparent 70%)}
+.visual-content{position:absolute;z-index:2;bottom:8%;right:9%;left:9%;color:white}
+.visual-content .eyebrow{color:#F0CDD1}
+.visual h1{font:400 clamp(65px,8vw,125px)/1 "Playfair Display",serif;margin:22px 0}
+.visual h1 em{color:#E7B7BF}
+.visual p{max-width:420px;font-size:17px;line-height:1.9}
+.visual-bottom{display:flex;gap:18px;align-items:center;margin-top:30px;font:600 11px "DM Sans",sans-serif;letter-spacing:.1em}
+.visual-bottom .line{height:1px;width:70px;background:var(--gold)}
+.form-side{display:flex;align-items:center;justify-content:center;padding:75px clamp(25px,6vw,100px)}
+.form-inner{width:min(520px,100%)}
+.form-inner h2{font:400 clamp(42px,5vw,70px)/1.1 "Playfair Display",serif;margin:15px 0}
+.form-inner h2 em{color:var(--pink)}
+.subtext{font-size:15px;color:var(--muted);line-height:1.9;margin:0 0 35px}
+.notice{padding:15px 18px;background:#F2DFE185;border-right:3px solid var(--pink);font-size:13px;line-height:1.8;margin-bottom:28px}
+
+/* STEPS */
+.progress{display:flex;gap:9px;margin:35px 0 15px}
+.progress span{height:3px;background:#48343920;flex:1;transition:.4s}
+.progress span.active{background:var(--pink)}
+.step-label{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font:600 11px "DM Sans",sans-serif;letter-spacing:.08em;margin-bottom:30px}
+.step{display:none;animation:rise .5s ease both}
+.step.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.step h3{font-size:25px;font-weight:500;margin:0 0 24px}
+.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.choice{background:var(--white);border:1px solid #4834392C;color:var(--dark);text-align:start;padding:22px 17px;min-height:105px;transition:.3s}
+.choice:hover,.choice.selected{border-color:var(--pink);background:var(--blush);transform:translateY(-2px)}
+.choice strong{display:block;font-size:17px}
+.choice small{display:block;font:500 11px "DM Sans",sans-serif;color:var(--muted);margin-top:10px}
+.choice .symbol{color:var(--pink);font-size:22px;margin-bottom:10px;display:block}
+.field{display:flex;flex-direction:column;gap:10px;margin:20px 0}
+.field label{font-weight:700;font-size:14px}
+.field input,.field select,.field textarea{width:100%;border:1px solid #48343930;background:var(--white);padding:16px;color:var(--dark);outline:none;border-radius:0}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--pink)}
+.field textarea{resize:vertical;min-height:90px}
+.form-actions{display:flex;gap:12px;margin-top:35px}
+.form-actions button{flex:1}
+.secondary{background:transparent;color:var(--dark)}
+.secondary:hover{color:white}
+.summary{background:white;padding:22px;margin-top:25px;border:1px solid #48343920}
+.summary-row{display:flex;justify-content:space-between;gap:15px;padding:11px 0;border-bottom:1px solid #48343915}
+.summary-row:last-child{border:0}
+.summary-row span:first-child{color:var(--muted)}
+.confirmation{text-align:center;padding:25px 0}
+.confirmation .star{font:400 85px "Playfair Display",serif;color:var(--gold)}
+.confirmation h3{font:400 43px "Playfair Display",serif;margin:15px 0}
+.confirmation p{line-height:2;color:var(--muted)}
+.demo-stamp{display:inline-block;padding:9px 18px;border:1px solid var(--pink);color:var(--pink);font:700 11px "DM Sans",sans-serif;letter-spacing:.1em;margin:15px 0}
+
+/* FOOTER */
+footer{background:var(--dark);color:var(--cream);padding:30px 0}
+.footer{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font:500 11px "DM Sans",sans-serif;color:#DDC9C9}
+
+/* RESPONSIVE */
+@media(max-width:950px){
+.booking-layout{grid-template-columns:1fr}
+.visual{min-height:440px}
+.visual-content{bottom:8%}
+.visual h1{font-size:75px}
+.form-side{padding:65px 7% 90px}
+}
+@media(max-width:650px){
+.nav{min-height:70px}
+.brand{font-size:25px}
+.navlinks{display:none;position:absolute;top:70px;right:0;left:0;background:var(--cream);padding:25px 5%;flex-direction:column;align-items:stretch;box-shadow:0 20px 30px #48343920}
+.navlinks.open{display:flex}
+.menu{display:block}
+.nav-book{display:none}
+.visual{min-height:390px}
+.visual h1{font-size:65px}
+.visual p{font-size:14px}
+.form-inner h2{font-size:48px}
+.choices{gap:9px}
+.choice{padding:17px 12px}
+.choice strong{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){
+*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container nav">
+<a href="index.html" class="brand">VELORA<span>.</span></a>
+<nav class="navlinks" id="navlinks">
+<a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+<a href="services.html" data-ar="الخدمات" data-en="Services">الخدمات</a>
+<a href="gallery.html" data-ar="المعرض" data-en="Gallery">المعرض</a>
+<a href="booking.html" data-ar="الحجز" data-en="Booking">الحجز</a>
+</nav>
+<div class="nav-actions">
+<button class="lang" id="lang">EN</button>
+<a href="services.html" class="btn nav-book" data-ar="استكشفي الخدمات" data-en="Explore Services">استكشفي الخدمات</a>
+<button class="menu" id="menu" aria-label="القائمة">☰</button>
+</div>
+</div>
+</header>
+
+<main class="booking-layout">
+
+<section class="visual">
+<div class="visual-image"></div>
+<div class="visual-content">
+<span class="eyebrow">A MOMENT JUST FOR YOU</span>
+<h1>Your<br><em>Moment.</em></h1>
+<p data-ar="وقت خاص بكِ. تجربة صُممت لتمنحكِ شعورًا مختلفًا من أول لحظة."
+data-en="A moment just for you. A thoughtfully designed experience from the very first touch.">
+وقت خاص بكِ. تجربة صُممت لتمنحكِ شعورًا مختلفًا من أول لحظة.
+</p>
+<div class="visual-bottom"><span>VELORA BEAUTY SALON</span><span class="line"></span><span>2026</span></div>
+</div>
+</section>
+
+<section class="form-side">
+<div class="form-inner">
+
+<span class="eyebrow">THE VELORA EXPERIENCE</span>
+<h2>Book your<br><em>beauty.</em></h2>
+<p class="subtext" data-ar="اختاري تفاصيل تجربتكِ الخاصة بخطوات بسيطة وأنيقة."
+data-en="Choose the details of your beauty experience in a few simple steps.">
+اختاري تفاصيل تجربتكِ الخاصة بخطوات بسيطة وأنيقة.
+</p>
+
+<div class="notice" data-ar="هذا نموذج حجز تجريبي لمعرض أعمال BYTEORA. لا يتم إرسال بيانات أو تأكيد مواعيد حقيقية."
+data-en="This is a BYTEORA portfolio demo. No information is submitted and no real appointments are confirmed.">
+هذا نموذج حجز تجريبي لمعرض أعمال BYTEORA. لا يتم إرسال بيانات أو تأكيد مواعيد حقيقية.
+</div>
+
+<div class="progress" id="progress">
+<span class="active"></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+<div class="step-label">
+<span id="stepNumber">STEP 01 / 04</span>
+<span>VELORA ✦</span>
+</div>
+
+<!-- STEP 1: SERVICE -->
+<div class="step active" data-step="0">
+<h3 data-ar="اختاري تجربتكِ" data-en="Choose Your Experience">اختاري تجربتكِ</h3>
+<div class="choices" id="serviceChoices">
+<button class="choice selected" data-value="hair">
+<span class="symbol">✦</span>
+<strong data-ar="تصفيف الشعر" data-en="Hair Artistry">تصفيف الشعر</strong>
+<small>FROM 18 OMR</small>
+</button>
+<button class="choice" data-value="nails">
+<span class="symbol">✦</span>
+<strong data-ar="العناية بالأظافر" data-en="Nail Atelier">العناية بالأظافر</strong>
+<small>FROM 12 OMR</small>
+</button>
+<button class="choice" data-value="skin">
+<span class="symbol">✦</span>
+<strong data-ar="العناية بالبشرة" data-en="Skin Rituals">العناية بالبشرة</strong>
+<small>FROM 25 OMR</small>
+</button>
+<button class="choice" data-value="makeup">
+<span class="symbol">✦</span>
+<strong data-ar="المكياج" data-en="Makeup Studio">المكياج</strong>
+<small>FROM 30 OMR</small>
+</button>
+</div>
+</div>
+
+<!-- STEP 2: SPECIALIST -->
+<div class="step" data-step="1">
+<h3 data-ar="اختاري الأخصائية" data-en="Choose Your Specialist">اختاري الأخصائية</h3>
+<div class="choices" id="staffChoices">
+<button class="choice selected" data-value="Lina">
+<span class="symbol">✦</span><strong>لينا | Lina</strong><small>BEAUTY SPECIALIST</small>
+</button>
+<button class="choice" data-value="Maya">
+<span class="symbol">✦</span><strong>مايا | Maya</strong><small>SENIOR STYLIST</small>
+</button>
+<button class="choice" data-value="Sara">
+<span class="symbol">✦</span><strong>سارة | Sara</strong><small>BEAUTY ARTIST</small>
+</button>
+<button class="choice" data-value="Any">
+<span class="symbol">✦</span>
+<strong data-ar="أي أخصائية" data-en="Any Specialist">أي أخصائية</strong>
+<small>FIRST AVAILABLE</small>
+</button>
+</div>
+</div>
+
+<!-- STEP 3: DATE -->
+<div class="step" data-step="2">
+<h3 data-ar="حددي الوقت المناسب" data-en="Find Your Moment">حددي الوقت المناسب</h3>
+<div class="field">
+<label for="date" data-ar="التاريخ" data-en="Date">التاريخ</label>
+<input id="date" type="date">
+</div>
+<div class="field">
+<label for="time" data-ar="الوقت" data-en="Time">الوقت</label>
+<select id="time">
+<option value="">اختاري الوقت / Select Time</option>
+<option>10:00 AM</option>
+<option>11:30 AM</option>
+<option>01:00 PM</option>
+<option>02:30 PM</option>
+<option>04:00 PM</option>
+<option>05:30 PM</option>
+<option>07:00 PM</option>
+</select>
+</div>
+</div>
+
+<!-- STEP 4: DETAILS -->
+<div class="step" data-step="3">
+<h3 data-ar="اللمسة الأخيرة" data-en="The Final Touch">اللمسة الأخيرة</h3>
+<div class="field">
+<label for="name" data-ar="الاسم التجريبي" data-en="Demo Name">الاسم التجريبي</label>
+<input id="name" type="text" maxlength="60" autocomplete="off" placeholder="Your name">
+</div>
+<div class="field">
+<label for="note" data-ar="ملاحظات (اختياري)" data-en="Notes (Optional)">ملاحظات (اختياري)</label>
+<textarea id="note" maxlength="150" placeholder="Optional"></textarea>
+</div>
+<div class="summary" id="summary"></div>
+</div>
+
+<!-- CONFIRMATION -->
+<div class="step" data-step="4">
+<div class="confirmation">
+<div class="star">✦</div>
+<span class="demo-stamp">DEMO CONFIRMATION</span>
+<h3>Beautifully<br>Booked.</h3>
+<p id="confirmationMessage"></p>
+<p data-ar="هذا تأكيد توضيحي فقط، ولم يتم إنشاء أي حجز حقيقي."
+data-en="This is a demo confirmation. No real booking was created.">
+هذا تأكيد توضيحي فقط، ولم يتم إنشاء أي حجز حقيقي.
+</p>
+<button class="btn" id="restart"
+data-ar="تجربة حجز جديدة ↗"
+data-en="Start Again ↗">تجربة حجز جديدة ↗</button>
+</div>
+</div>
+
+<div class="form-actions" id="formActions">
+<button class="btn secondary" id="back" data-ar="السابق" data-en="Back">السابق</button>
+<button class="btn" id="next">التالي ←</button>
+</div>
+
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container footer">
+<span>© 2026 VELORA. CONCEPT WEBSITE.</span>
+<span>DESIGNED & DEVELOPED BY BYTEORA ✦</span>
+</div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+const $ = selector => document.querySelector(selector);
+const $$ = selector => document.querySelectorAll(selector);
+
+let language = "ar";
+let step = 0;
+
+const booking = {
+service:"hair",
+staff:"Lina"
+};
+
+const serviceLabels = {
+hair:{ar:"تصفيف الشعر",en:"Hair Artistry"},
+nails:{ar:"العناية بالأظافر",en:"Nail Atelier"},
+skin:{ar:"العناية بالبشرة",en:"Skin Rituals"},
+makeup:{ar:"المكياج",en:"Makeup Studio"}
+};
+
+/* MOBILE MENU */
+$("#menu").addEventListener("click",()=>{
+const opened = $("#navlinks").classList.toggle("open");
+$("#menu").setAttribute("aria-expanded",String(opened));
+});
+
+/* CHOICE SELECTION */
+function setupChoices(container,key){
+$$("#"+container+" .choice").forEach(button=>{
+button.addEventListener("click",()=>{
+$$("#"+container+" .choice").forEach(item=>{
+item.classList.remove("selected");
+});
+button.classList.add("selected");
+booking[key]=button.dataset.value;
+});
+});
+}
+setupChoices("serviceChoices","service");
+setupChoices("staffChoices","staff");
+
+/* OPTIONAL SERVICE FROM URL */
+const requestedService = new URLSearchParams(
+window.location.search
+).get("service");
+
+if(serviceLabels[requestedService]){
+booking.service=requestedService;
+$$("#serviceChoices .choice").forEach(button=>{
+button.classList.toggle(
+"selected",
+button.dataset.value===requestedService
+);
+});
+}
+
+/* LOCAL DATE */
+function dateString(date){
+const y=date.getFullYear();
+const m=String(date.getMonth()+1).padStart(2,"0");
+const d=String(date.getDate()).padStart(2,"0");
+return y+"-"+m+"-"+d;
+}
+
+$("#date").min=dateString(new Date());
+
+/* SUMMARY */
+function updateSummary(){
+const name=$("#name").value.trim();
+const service=serviceLabels[booking.service][language];
+const date=$("#date").value;
+const time=$("#time").value;
+const staff=booking.staff==="Any"
+?(language==="ar"?"أي أخصائية":"Any Specialist")
+:booking.staff;
+
+const rows=language==="ar"
+?[
+["الخدمة",service],
+["الأخصائية",staff],
+["التاريخ",date],
+["الوقت",time]
+]
+:[
+["Service",service],
+["Specialist",staff],
+["Date",date],
+["Time",time]
+];
+
+const summary=$("#summary");
+summary.replaceChildren();
+
+rows.forEach(([label,value])=>{
+const row=document.createElement("div");
+row.className="summary-row";
+
+const labelSpan=document.createElement("span");
+labelSpan.textContent=label;
+
+const valueSpan=document.createElement("span");
+valueSpan.textContent=value;
+
+row.append(labelSpan,valueSpan);
+summary.appendChild(row);
+});
+}
+
+/* UPDATE STEPS */
+function renderStep(){
+$$(".step").forEach((element,index)=>{
+element.classList.toggle("active",index===step);
+});
+
+$$("#progress span").forEach((element,index)=>{
+element.classList.toggle(
+"active",
+index<=Math.min(step,3)
+);
+});
+
+$("#stepNumber").textContent=
+step===4?"VELORA / COMPLETE":
+"STEP 0"+(step+1)+" / 04";
+
+$("#formActions").style.display=
+step===4?"none":"flex";
+
+$("#back").style.display=
+step===0?"none":"";
+
+$("#next").textContent=
+step===3
+?(language==="ar"?"تأكيد تجريبي ✦":"Demo Confirmation ✦")
+:(language==="ar"?"التالي ←":"Next →");
+
+if(step===3)updateSummary();
+}
+
+/* NEXT */
+$("#next").addEventListener("click",()=>{
+if(step===2){
+const date=$("#date").value;
+const time=$("#time").value;
+
+if(!date||!time){
+alert(language==="ar"
+?"اختاري التاريخ والوقت أولًا."
+:"Please choose a date and time.");
+return;
+}
+
+if(date<dateString(new Date())){
+alert(language==="ar"
+?"اختاري تاريخًا قادمًا."
+:"Please select a future date.");
+return;
+}
+}
+
+if(step===3){
+const name=$("#name").value.trim();
+
+if(!name){
+alert(language==="ar"
+?"اكتبي اسمًا تجريبيًا."
+:"Please enter a demo name.");
+return;
+}
+
+const service=serviceLabels[booking.service][language];
+
+$("#confirmationMessage").textContent=
+language==="ar"
+?"شكرًا "+name+"! هذه معاينة لحجز "+
+service+" بتاريخ "+$("#date").value+
+"، الساعة "+$("#time").value+"."
+:"Thank you, "+name+"! Your demo "+
+service+" appointment is shown for "+
+$("#date").value+" at "+$("#time").value+".";
+}
+
+if(step<4){
+step++;
+renderStep();
+}
+});
+
+/* BACK */
+$("#back").addEventListener("click",()=>{
+if(step>0){
+step--;
+renderStep();
+}
+});
+
+/* RESTART */
+$("#restart").addEventListener("click",()=>{
+step=0;
+$("#name").value="";
+$("#note").value="";
+$("#date").value="";
+$("#time").value="";
+renderStep();
+});
+
+/* LANGUAGE */
+$("#lang").addEventListener("click",()=>{
+language=language==="ar"?"en":"ar";
+
+document.documentElement.lang=language;
+document.documentElement.dir=
+language==="ar"?"rtl":"ltr";
+
+$("#lang").textContent=
+language==="ar"?"EN":"عربي";
+
+$$("[data-ar][data-en]").forEach(element=>{
+element.textContent=element.getAttribute(
+"data-"+language
+);
+});
+
+renderStep();
+});
+
+renderStep();
+})();
+</script>
+</body>
+</html>
