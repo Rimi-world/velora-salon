@@ -1,14 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#FAF6F0">
+<meta name="description" content="Discover VELORA luxury beauty services. A fictional salon concept by BYTEORA.">
 <title>Our Services | VELORA</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -19,7 +21,7 @@
 --dark:#483439;
 --gold:#C6A477;
 --muted:#86787A;
---ease:cubic-bezier(.22,1,.36,1);
+--ease:cubic-bezier(.22,1,.36,1)
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -28,388 +30,420 @@ margin:0;
 background:var(--cream);
 color:var(--dark);
 font-family:Tajawal,sans-serif;
-overflow-x:hidden;
+overflow-x:hidden
 }
 button{font:inherit;cursor:pointer}
 a{text-decoration:none;color:inherit}
-img{display:block;width:100%}
-.container{width:min(1300px,90%);margin:auto}
-.serif{font-family:"Playfair Display",serif}
+img{display:block;max-width:100%}
+.container{width:min(1250px,90%);margin:auto}
 .eyebrow{
 font:700 11px "DM Sans",sans-serif;
-letter-spacing:.24em;
-color:var(--pink);
+letter-spacing:.2em;
+color:var(--pink)
 }
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+padding:17px 28px;
+background:var(--dark);
+border:1px solid var(--dark);
+color:white;
+font-weight:700;
+font-size:14px;
+transition:.35s var(--ease)
+}
+.btn:hover{
+background:var(--pink);
+border-color:var(--pink);
+transform:translateY(-3px)
+}
+.btn-outline{
+background:transparent;
+color:var(--dark)
+}
+.btn-outline:hover{color:white}
 .reveal{
 opacity:0;
-transform:translateY(45px);
-transition:1s var(--ease);
+transform:translateY(35px);
+transition:opacity .85s var(--ease),transform .85s var(--ease)
 }
 .reveal.visible{opacity:1;transform:none}
+button:focus-visible,a:focus-visible{
+outline:2px solid var(--pink);
+outline-offset:4px
+}
 
 /* NAVIGATION */
 header{
 position:fixed;
 top:0;left:0;right:0;
 z-index:100;
-background:#FAF6F0E8;
-backdrop-filter:blur(18px);
-border-bottom:1px solid #48343915;
+background:#FAF6F0F2;
+backdrop-filter:blur(16px);
+border-bottom:1px solid #4834391C
 }
 .nav{
-min-height:77px;
+min-height:88px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:18px;
+gap:22px
 }
 .brand{
-font:400 30px "Playfair Display",serif;
-letter-spacing:.06em;
+display:flex;
+align-items:center;
+gap:10px;
+flex-shrink:0
 }
-.brand span{color:var(--pink)}
+.brand img{
+width:82px;
+height:68px;
+object-fit:contain
+}
+.brand-name{
+font:400 23px "Playfair Display",serif;
+letter-spacing:.08em
+}
 .navlinks{
 display:flex;
 align-items:center;
-gap:27px;
+gap:25px
 }
 .navlinks a{
-font-size:14px;
+font-size:13px;
 font-weight:700;
-transition:.3s;
+transition:color .3s
 }
-.navlinks a:hover{color:var(--pink)}
+.navlinks a:hover,.navlinks .current{color:var(--pink)}
 .nav-actions{display:flex;align-items:center;gap:12px}
 .lang{
+background:none;
 border:0;
-background:transparent;
 color:var(--dark);
 font:700 12px "DM Sans",sans-serif;
-padding:12px;
-}
-.btn{
-border:1px solid var(--dark);
-background:var(--dark);
-color:white;
-padding:16px 25px;
-font-weight:700;
-font-size:14px;
-display:inline-block;
-transition:.35s var(--ease);
-}
-.btn:hover{
-background:var(--pink);
-border-color:var(--pink);
-transform:translateY(-3px);
+padding:10px
 }
 .menu{
 display:none;
+background:none;
 border:0;
-background:transparent;
 color:var(--dark);
-font-size:26px;
+font-size:27px
 }
 
 /* HERO */
 .hero{
-min-height:82svh;
+position:relative;
+min-height:78svh;
 display:flex;
 align-items:center;
-position:relative;
+padding:170px 0 100px;
 isolation:isolate;
-padding:140px 0 100px;
-overflow:hidden;
+overflow:hidden
 }
-.hero-photo{
+.hero-bg{
 position:absolute;
 inset:0;
 z-index:-2;
-background:
-url("https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1800&q=85&auto=format&fit=crop")
-center/cover;
-animation:slowZoom 8s ease-out both;
+background:url("https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1800&q=85&auto=format&fit=crop") center/cover
 }
 .hero:after{
 content:"";
 position:absolute;
 inset:0;
 z-index:-1;
-background:linear-gradient(
-90deg,
-#FAF6F08C,
-#FAF6F0ED 65%,
-#FAF6F0F7
-);
+background:linear-gradient(90deg,#FAF6F0F7,#FAF6F0DE 65%,#FAF6F075)
 }
-@keyframes slowZoom{
-from{transform:scale(1.13)}
-to{transform:scale(1)}
+.hero-content{max-width:760px}
+.hero-mark{
+width:130px;
+height:130px;
+object-fit:contain;
+margin-bottom:15px
 }
-.hero-content{max-width:900px}
 .hero h1{
-font:400 clamp(70px,12vw,175px)/.95 "Playfair Display",serif;
-letter-spacing:-.055em;
-margin:28px 0;
+font:400 clamp(65px,10vw,130px)/1.05 "Playfair Display",serif;
+letter-spacing:-.05em;
+margin:18px 0
 }
-.hero h1 em{
-color:var(--pink);
-font-weight:400;
-}
+.hero h1 em{color:var(--pink);font-weight:400}
 .hero p{
-max-width:480px;
-color:var(--dark);
-font-size:19px;
-line-height:1.9;
-}
-.hero-number{
-position:absolute;
-bottom:28px;
-left:5%;
-font:600 11px "DM Sans",sans-serif;
-letter-spacing:.18em;
+font-size:18px;
+line-height:2;
+max-width:550px;
+margin:25px 0 35px
 }
 
 /* INTRO TEXT */
 .intro-section{
-text-align:center;
-padding:125px 0 80px;
+padding:110px 0 60px;
+text-align:center
 }
 .intro-section h2{
-font:400 clamp(45px,7vw,95px)/1.15 "Playfair Display",serif;
-margin:20px 0;
+font:400 clamp(48px,7vw,85px)/1.1 "Playfair Display",serif;
+margin:18px 0
 }
 .intro-section h2 em{color:var(--pink)}
 .intro-section p{
-max-width:620px;
-margin:20px auto;
-font-size:17px;
 color:var(--muted);
+font-size:17px;
 line-height:2;
+max-width:650px;
+margin:20px auto
 }
 
-/* CATEGORY FILTERS */
+/* FILTERS */
 .filters{
 display:flex;
+align-items:center;
 justify-content:center;
-gap:10px;
 flex-wrap:wrap;
-margin:0 auto 65px;
+gap:10px;
+margin:30px 0 60px
 }
 .filter{
+padding:13px 20px;
+border:1px solid #4834392B;
 background:transparent;
-border:1px solid #48343930;
-padding:13px 24px;
 color:var(--dark);
+font-size:13px;
 font-weight:700;
-transition:.3s;
+transition:.3s
 }
-.filter.active,.filter:hover{
+.filter:hover,.filter.active{
 background:var(--dark);
 color:white;
-border-color:var(--dark);
+border-color:var(--dark)
 }
 
 /* SERVICE CARDS */
-.services{
-padding-bottom:140px;
-}
-.cards{
+.services-section{padding:0 0 135px}
+.service-grid{
 display:grid;
 grid-template-columns:repeat(2,minmax(0,1fr));
-gap:65px 28px;
+gap:25px
 }
-.card{
-position:relative;
-min-width:0;
-}
-.card:nth-child(even){margin-top:100px}
-.card-image{
-height:560px;
+.service-card{
+background:var(--white);
+border:1px solid #4834391B;
 overflow:hidden;
-position:relative;
-background:var(--blush);
+transition:.35s var(--ease)
 }
-.card-image img{
+.service-card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 40px #48343912
+}
+.service-image{
+height:370px;
+overflow:hidden
+}
+.service-image img{
+width:100%;
 height:100%;
 object-fit:cover;
-transition:transform 1.2s var(--ease);
+transition:transform .8s var(--ease)
 }
-.card:hover .card-image img{
-transform:scale(1.075);
-}
-.card-index{
-position:absolute;
-top:25px;
-right:25px;
-color:white;
-font:500 14px "DM Sans",sans-serif;
-background:#48343988;
-backdrop-filter:blur(8px);
-padding:11px 15px;
-}
-.card-info{
-padding:28px 5px 0;
+.service-card:hover img{transform:scale(1.05)}
+.service-body{padding:35px}
+.service-top{
 display:flex;
-justify-content:space-between;
-align-items:start;
-gap:20px;
-}
-.card h3{
-font:400 clamp(30px,4vw,52px) "Playfair Display",serif;
-margin:0 0 10px;
-}
-.card p{
-font-size:15px;
-color:var(--muted);
-line-height:1.8;
-margin:0;
-max-width:400px;
-}
-.price{
-white-space:nowrap;
-color:var(--pink);
-font:600 15px "DM Sans",sans-serif;
-padding-top:12px;
-}
-.card-bottom{
-display:flex;
-justify-content:space-between;
 align-items:center;
-border-top:1px solid #48343925;
-margin-top:25px;
-padding-top:20px;
+justify-content:space-between;
+gap:15px
 }
-.card-bottom span{
-font:600 11px "DM Sans",sans-serif;
-letter-spacing:.08em;
+.service-number{
+color:var(--pink);
+font:700 11px "DM Sans",sans-serif;
+letter-spacing:.15em
+}
+.service-price{
+color:var(--gold);
+font:700 13px "DM Sans",sans-serif
+}
+.service-body h3{
+font:400 clamp(32px,4vw,47px) "Playfair Display",serif;
+margin:20px 0 15px
+}
+.service-body p{
 color:var(--muted);
+line-height:2;
+font-size:15px;
+min-height:65px
 }
-.book-link{
-background:none;
-border:0;
-border-bottom:1px solid var(--dark);
-color:var(--dark);
-font-weight:700;
-padding:5px 0;
-transition:.3s;
+.service-details{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin:25px 0 30px
 }
-.book-link:hover{color:var(--pink);border-color:var(--pink)}
-.card.hidden{display:none}
+.service-details span{
+padding:9px 12px;
+background:var(--blush);
+font-size:12px;
+color:var(--dark)
+}
+.service-body .btn{width:100%}
+.service-card[hidden]{display:none}
 
 /* PHILOSOPHY */
 .philosophy{
-background:var(--dark);
-color:var(--cream);
-padding:140px 0;
-text-align:center;
+background:var(--blush);
+padding:130px 0
 }
-.philosophy .symbol{
-color:var(--gold);
-font:400 55px "Playfair Display",serif;
+.philosophy-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:80px;
+align-items:center
+}
+.philosophy-image{
+height:580px;
+overflow:hidden
+}
+.philosophy-image img{
+width:100%;
+height:100%;
+object-fit:cover
 }
 .philosophy h2{
-font:400 clamp(48px,8vw,110px)/1.2 "Playfair Display",serif;
-margin:30px 0;
+font:400 clamp(50px,7vw,90px)/1.1 "Playfair Display",serif;
+margin:20px 0
 }
 .philosophy h2 em{color:var(--pink)}
 .philosophy p{
-max-width:560px;
-margin:auto;
-line-height:2;
-color:#E1CDCF;
-font-size:17px;
-}
-
-/* CALL TO ACTION */
-.cta{
-background:var(--blush);
-padding:130px 0;
-text-align:center;
-}
-.cta h2{
-font:400 clamp(55px,9vw,120px)/1.1 "Playfair Display",serif;
-margin:25px 0;
-}
-.cta h2 em{color:var(--pink)}
-.cta p{
 font-size:17px;
 color:var(--muted);
-margin-bottom:35px;
+line-height:2.1;
+margin-bottom:30px
+}
+
+/* BOOKING CTA */
+.cta{
+padding:140px 0;
+background:var(--dark);
+color:var(--cream);
+text-align:center
+}
+.cta h2{
+font:400 clamp(60px,9vw,120px)/1.1 "Playfair Display",serif;
+margin:25px 0
+}
+.cta h2 em{color:#DCA8B0}
+.cta p{
+color:#E0CCCF;
+font-size:17px;
+line-height:2;
+margin-bottom:35px
+}
+.cta .btn{
+background:var(--cream);
+color:var(--dark);
+border-color:var(--cream)
+}
+.cta .btn:hover{
+background:var(--pink);
+border-color:var(--pink);
+color:white
 }
 
 /* FOOTER */
 footer{
-background:var(--dark);
+background:#34262A;
 color:var(--cream);
-padding:90px 0 28px;
+padding:65px 0 30px
 }
 .footer-top{
 display:flex;
 justify-content:space-between;
-gap:40px;
+gap:35px;
+flex-wrap:wrap;
+padding-bottom:55px
 }
 .footer-logo{
-font:400 clamp(70px,12vw,150px) "Playfair Display",serif;
+width:150px;
+height:130px;
+object-fit:contain
 }
-.footer-logo span{color:var(--gold)}
-.footer-top p{color:#DDC9C9}
+.footer-description{
+max-width:330px;
+font-size:14px;
+color:#DDC8CC;
+line-height:2
+}
 .footer-links{
 display:flex;
-flex-direction:column;
-gap:17px;
+gap:65px;
+flex-wrap:wrap
 }
+.footer-links div{
+display:flex;
+flex-direction:column;
+gap:16px
+}
+.footer-links strong{
+color:var(--gold);
+font:700 11px "DM Sans",sans-serif;
+letter-spacing:.14em
+}
+.footer-links a{font-size:14px}
+.footer-links a:hover{color:var(--pink)}
 .footer-bottom{
+border-top:1px solid #FFFFFF22;
+padding-top:25px;
 display:flex;
 justify-content:space-between;
+flex-wrap:wrap;
 gap:15px;
-border-top:1px solid #FFFFFF30;
-margin-top:85px;
-padding-top:25px;
-color:#DDC9C9;
-font:500 11px "DM Sans",sans-serif;
+color:#CCB5B9;
+font:500 11px "DM Sans",sans-serif
 }
 
 /* RESPONSIVE */
-@media(max-width:900px){
+@media(max-width:1050px){
 .navlinks{
 display:none;
 position:absolute;
-top:77px;
-right:0;
-left:0;
-padding:30px 5%;
+top:88px;
+right:0;left:0;
 background:var(--cream);
+padding:25px 5%;
 flex-direction:column;
 align-items:stretch;
-box-shadow:0 15px 30px #48343918;
+box-shadow:0 20px 35px #48343920
 }
 .navlinks.open{display:flex}
 .menu{display:block}
-.card-image{height:450px}
+.philosophy-grid{grid-template-columns:1fr;gap:45px}
+.philosophy-image{height:440px}
 }
-@media(max-width:600px){
-.brand{font-size:25px}
+@media(max-width:650px){
+.nav{min-height:75px}
+.brand img{width:65px;height:58px}
+.brand-name{font-size:18px}
+.navlinks{top:75px}
 .nav-book{display:none}
-.hero{min-height:75svh}
-.hero h1{font-size:clamp(65px,16vw,100px)}
+.hero{min-height:75svh;padding:130px 0 75px}
+.hero-mark{width:100px;height:100px}
+.hero h1{font-size:65px}
 .hero p{font-size:16px}
-.intro-section{padding:90px 0 60px}
-.cards{grid-template-columns:1fr;gap:65px}
-.card:nth-child(even){margin-top:0}
-.card-image{height:430px}
-.card h3{font-size:37px}
-.card-info{flex-direction:column;gap:8px}
-.price{padding:0}
-.services{padding-bottom:90px}
-.philosophy,.cta{padding:95px 0}
-.footer-top,.footer-bottom{flex-direction:column}
-.footer-logo{font-size:75px}
+.intro-section{padding:80px 0 40px}
+.intro-section h2{font-size:55px}
+.service-grid{grid-template-columns:1fr}
+.service-image{height:290px}
+.service-body{padding:25px}
+.service-body p{min-height:0}
+.services-section{padding-bottom:90px}
+.philosophy,.cta{padding:90px 0}
+.philosophy-image{height:350px}
+.philosophy h2{font-size:58px}
+.footer-links{gap:35px}
 }
 @media(prefers-reduced-motion:reduce){
 *,*:before,*:after{
-animation-duration:.01ms!important;
 transition-duration:.01ms!important;
-scroll-behavior:auto!important;
+scroll-behavior:auto!important
 }
 .reveal{opacity:1;transform:none}
 }
@@ -420,58 +454,74 @@ scroll-behavior:auto!important;
 
 <header>
 <div class="container nav">
-<a class="brand" href="index.html">VELORA<span>.</span></a>
+
+<a href="index.html" class="brand" aria-label="VELORA Home">
+<img src="velora-logo.png" alt="VELORA logo">
+<span class="brand-name">VELORA</span>
+</a>
 
 <nav class="navlinks" id="navlinks">
 <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
-<a href="services.html" data-ar="الخدمات" data-en="Services">الخدمات</a>
+<a href="index.html#about" data-ar="عن ڤيلورا" data-en="About">عن ڤيلورا</a>
+<a href="services.html" class="current" data-ar="الخدمات" data-en="Services">الخدمات</a>
 <a href="gallery.html" data-ar="المعرض" data-en="Gallery">المعرض</a>
 <a href="booking.html" data-ar="الحجز" data-en="Booking">الحجز</a>
 </nav>
 
 <div class="nav-actions">
 <button class="lang" id="lang">EN</button>
-<a class="btn nav-book" href="booking.html"
-data-ar="احجزي الآن" data-en="Book Now">احجزي الآن</a>
-<button class="menu" id="menu" aria-label="القائمة">☰</button>
+<a href="booking.html" class="btn nav-book"
+data-ar="احجزي موعدك ↗"
+data-en="Book Now ↗">احجزي موعدك ↗</a>
+<button class="menu" id="menu" aria-label="القائمة" aria-expanded="false">☰</button>
 </div>
+
 </div>
 </header>
 
 <main>
+
+<!-- HERO -->
 <section class="hero">
-<div class="hero-photo"></div>
+<div class="hero-bg"></div>
+
 <div class="container hero-content">
+<img class="hero-mark" src="velora-logo.png" alt="VELORA">
+
 <span class="eyebrow">THE VELORA COLLECTION</span>
-<h1>Our<br><em>Services.</em></h1>
-<p data-ar="كل خدمة في ڤيلورا صُممت لتكون تجربة خاصة بكِ. من أبسط التفاصيل إلى أجمل التحولات."
-data-en="Every Velora service is designed to feel personal, from the smallest detail to the most beautiful transformation.">
-كل خدمة في ڤيلورا صُممت لتكون تجربة خاصة بكِ. من أبسط التفاصيل إلى أجمل التحولات.
+
+<h1>Beauty in<br><em>every ritual.</em></h1>
+
+<p data-ar="اكتشفي عالمًا من الخدمات المصممة لتمنحكِ لحظات من الراحة والجمال والفخامة."
+data-en="Discover a world of beauty experiences designed for moments of calm, confidence and luxury.">
+اكتشفي عالمًا من الخدمات المصممة لتمنحكِ لحظات من الراحة والجمال والفخامة.
 </p>
+
 <a href="#collection" class="btn"
-data-ar="اكتشفي المجموعة ↗"
-data-en="Explore Collection ↗">اكتشفي المجموعة ↗</a>
+data-ar="استكشفي الخدمات ↓"
+data-en="Explore Services ↓">استكشفي الخدمات ↓</a>
 </div>
-<span class="hero-number">VELORA / COLLECTION 2026</span>
 </section>
 
+<!-- INTRO -->
 <section class="intro-section" id="collection">
 <div class="container reveal">
-<span class="eyebrow">BEAUTY, REIMAGINED</span>
-<h2>Curated with <em>love.</em></h2>
-<p data-ar="تجارب جمال وعناية منتقاة بعناية، تجمع بين الأناقة والاهتمام واللمسات التي تصنع الفرق."
-data-en="A considered collection of beauty rituals, bringing together elegance, care, and the details that make a difference.">
-تجارب جمال وعناية منتقاة بعناية، تجمع بين الأناقة والاهتمام واللمسات التي تصنع الفرق.
+<span class="eyebrow">OUR SIGNATURE SERVICES</span>
+<h2>Curated for <em>you.</em></h2>
+<p data-ar="كل خدمة في ڤيلورا صُممت لتكون تجربة خاصة. اختاري ما يناسب لحظتك."
+data-en="Every Velora service is designed as a personal experience. Choose the ritual that suits your moment.">
+كل خدمة في ڤيلورا صُممت لتكون تجربة خاصة. اختاري ما يناسب لحظتك.
 </p>
 </div>
 </section>
 
-<section class="services">
+<!-- FILTERS -->
+<section class="services-section">
 <div class="container">
 
-<div class="filters reveal">
+<div class="filters" role="group" aria-label="Service categories">
 <button class="filter active" data-filter="all"
-data-ar="جميع الخدمات" data-en="All Services">جميع الخدمات</button>
+data-ar="كل الخدمات" data-en="All Services">كل الخدمات</button>
 <button class="filter" data-filter="hair"
 data-ar="الشعر" data-en="Hair">الشعر</button>
 <button class="filter" data-filter="nails"
@@ -482,169 +532,220 @@ data-ar="البشرة" data-en="Skin">البشرة</button>
 data-ar="المكياج" data-en="Makeup">المكياج</button>
 </div>
 
-<div class="cards">
+<div class="service-grid">
 
-<article class="card reveal" data-category="hair">
-<div class="card-image">
-<img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1100&q=85&auto=format&fit=crop"
+<!-- HAIR -->
+<article class="service-card reveal" data-category="hair">
+<div class="service-image">
+<img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1000&q=85&auto=format&fit=crop"
 alt="Hair styling" loading="lazy">
-<span class="card-index">01 / HAIR</span>
 </div>
-<div class="card-info">
-<div>
+<div class="service-body">
+<div class="service-top">
+<span class="service-number">01 / HAIR ARTISTRY</span>
+<span class="service-price">18 OMR +</span>
+</div>
+
 <h3>Hair Artistry</h3>
-<p data-ar="قصات وتصفيفات مصممة لتعكس شخصيتك وتبرز جمال شعرك الطبيعي."
-data-en="Cuts and styling designed to express your personality and celebrate your natural beauty.">
-قصات وتصفيفات مصممة لتعكس شخصيتك وتبرز جمال شعرك الطبيعي.
+
+<p data-ar="قصّات عصرية، وتصفيف أنيق، ولمسات تمنح شعركِ إطلالة مميزة."
+data-en="Modern cuts, elegant styling and finishing touches for a distinctive look.">
+قصّات عصرية، وتصفيف أنيق، ولمسات تمنح شعركِ إطلالة مميزة.
 </p>
+
+<div class="service-details">
+<span data-ar="تصفيف الشعر" data-en="Styling">تصفيف الشعر</span>
+<span data-ar="قصّات" data-en="Haircuts">قصّات</span>
+<span data-ar="عناية" data-en="Care">عناية</span>
 </div>
-<span class="price">18 OMR +</span>
-</div>
-<div class="card-bottom">
-<span>45–90 MIN</span>
-<a class="book-link" href="booking.html?service=hair"
-data-ar="احجزي التجربة ↗" data-en="Book Experience ↗">
-احجزي التجربة ↗
-</a>
+
+<a href="booking.html?service=hair" class="btn"
+data-ar="اختاري هذه الخدمة ↗"
+data-en="Select This Service ↗">اختاري هذه الخدمة ↗</a>
 </div>
 </article>
 
-<article class="card reveal" data-category="nails">
-<div class="card-image">
-<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1100&q=85&auto=format&fit=crop"
-alt="Nail styling" loading="lazy">
-<span class="card-index">02 / NAILS</span>
+<!-- NAILS -->
+<article class="service-card reveal" data-category="nails">
+<div class="service-image">
+<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1000&q=85&auto=format&fit=crop"
+alt="Nail care" loading="lazy">
 </div>
-<div class="card-info">
-<div>
+<div class="service-body">
+<div class="service-top">
+<span class="service-number">02 / NAIL ATELIER</span>
+<span class="service-price">12 OMR +</span>
+</div>
+
 <h3>Nail Atelier</h3>
-<p data-ar="تفاصيل ناعمة، ألوان أنيقة، وعناية تمنح يديك لمسة استثنائية."
-data-en="Delicate details, beautiful colors, and a touch of care for your hands.">
-تفاصيل ناعمة، ألوان أنيقة، وعناية تمنح يديك لمسة استثنائية.
+
+<p data-ar="عناية دقيقة بالأظافر مع ألوان وتصاميم ناعمة تناسب ذوقكِ."
+data-en="Thoughtful nail care with delicate colors and designs tailored to your style.">
+عناية دقيقة بالأظافر مع ألوان وتصاميم ناعمة تناسب ذوقكِ.
 </p>
+
+<div class="service-details">
+<span data-ar="مانيكير" data-en="Manicure">مانيكير</span>
+<span data-ar="باديكير" data-en="Pedicure">باديكير</span>
+<span data-ar="تصاميم" data-en="Nail Art">تصاميم</span>
 </div>
-<span class="price">12 OMR +</span>
-</div>
-<div class="card-bottom">
-<span>30–75 MIN</span>
-<a class="book-link" href="booking.html?service=nails"
-data-ar="احجزي التجربة ↗" data-en="Book Experience ↗">
-احجزي التجربة ↗
-</a>
+
+<a href="booking.html?service=nails" class="btn"
+data-ar="اختاري هذه الخدمة ↗"
+data-en="Select This Service ↗">اختاري هذه الخدمة ↗</a>
 </div>
 </article>
 
-<article class="card reveal" data-category="skin">
-<div class="card-image">
-<img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1100&q=85&auto=format&fit=crop"
-alt="Skin care" loading="lazy">
-<span class="card-index">03 / SKIN</span>
+<!-- SKIN -->
+<article class="service-card reveal" data-category="skin">
+<div class="service-image">
+<img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1000&q=85&auto=format&fit=crop"
+alt="Skincare ritual" loading="lazy">
 </div>
-<div class="card-info">
-<div>
+<div class="service-body">
+<div class="service-top">
+<span class="service-number">03 / SKIN RITUALS</span>
+<span class="service-price">25 OMR +</span>
+</div>
+
 <h3>Skin Rituals</h3>
-<p data-ar="طقوس هادئة للعناية بالبشرة، تمنحك وقتًا لنفسك وإحساسًا بالانتعاش."
-data-en="Calming skincare rituals that make space for relaxation and refreshment.">
-طقوس هادئة للعناية بالبشرة، تمنحك وقتًا لنفسك وإحساسًا بالانتعاش.
+
+<p data-ar="طقوس عناية لطيفة بالبشرة تمنحكِ لحظات من الاسترخاء والانتعاش."
+data-en="Gentle skincare rituals offering moments of relaxation and refreshment.">
+طقوس عناية لطيفة بالبشرة تمنحكِ لحظات من الاسترخاء والانتعاش.
 </p>
+
+<div class="service-details">
+<span data-ar="تنظيف البشرة" data-en="Facials">تنظيف البشرة</span>
+<span data-ar="ترطيب" data-en="Hydration">ترطيب</span>
+<span data-ar="استرخاء" data-en="Relaxation">استرخاء</span>
 </div>
-<span class="price">25 OMR +</span>
-</div>
-<div class="card-bottom">
-<span>50–90 MIN</span>
-<a class="book-link" href="booking.html?service=skin"
-data-ar="احجزي التجربة ↗" data-en="Book Experience ↗">
-احجزي التجربة ↗
-</a>
+
+<a href="booking.html?service=skin" class="btn"
+data-ar="اختاري هذه الخدمة ↗"
+data-en="Select This Service ↗">اختاري هذه الخدمة ↗</a>
 </div>
 </article>
 
-<article class="card reveal" data-category="makeup">
-<div class="card-image">
-<img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1100&q=85&auto=format&fit=crop"
+<!-- MAKEUP -->
+<article class="service-card reveal" data-category="makeup">
+<div class="service-image">
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1000&q=85&auto=format&fit=crop"
 alt="Makeup artistry" loading="lazy">
-<span class="card-index">04 / MAKEUP</span>
 </div>
-<div class="card-info">
-<div>
+<div class="service-body">
+<div class="service-top">
+<span class="service-number">04 / MAKEUP STUDIO</span>
+<span class="service-price">30 OMR +</span>
+</div>
+
 <h3>Makeup Studio</h3>
-<p data-ar="إطلالات ناعمة أو جريئة، بتفاصيل تعبّر عن أسلوبك ومناسبتك."
-data-en="Soft or bold looks, thoughtfully created for your style and occasion.">
-إطلالات ناعمة أو جريئة، بتفاصيل تعبّر عن أسلوبك ومناسبتك.
+
+<p data-ar="إطلالات مكياج ناعمة أو جريئة، مصممة لتناسب مناسبتكِ."
+data-en="Soft or expressive makeup looks designed for your special occasion.">
+إطلالات مكياج ناعمة أو جريئة، مصممة لتناسب مناسبتكِ.
 </p>
+
+<div class="service-details">
+<span data-ar="مكياج ناعم" data-en="Soft Glam">مكياج ناعم</span>
+<span data-ar="مناسبات" data-en="Occasions">مناسبات</span>
+<span data-ar="إطلالات" data-en="Looks">إطلالات</span>
 </div>
-<span class="price">30 OMR +</span>
-</div>
-<div class="card-bottom">
-<span>45–120 MIN</span>
-<a class="book-link" href="booking.html?service=makeup"
-data-ar="احجزي التجربة ↗" data-en="Book Experience ↗">
-احجزي التجربة ↗
-</a>
+
+<a href="booking.html?service=makeup" class="btn"
+data-ar="اختاري هذه الخدمة ↗"
+data-en="Select This Service ↗">اختاري هذه الخدمة ↗</a>
 </div>
 </article>
 
 </div>
-
-<p style="text-align:center;color:var(--muted);font-size:13px;margin-top:75px"
-data-ar="الأسعار والخدمات المعروضة توضيحية لمشروع تجريبي، وليست عروضًا فعلية."
-data-en="All prices and services are illustrative for this demo concept.">
-الأسعار والخدمات المعروضة توضيحية لمشروع تجريبي، وليست عروضًا فعلية.
-</p>
-
 </div>
 </section>
 
+<!-- PHILOSOPHY -->
 <section class="philosophy">
-<div class="container reveal">
-<div class="symbol">✦</div>
-<span class="eyebrow">THE VELORA PHILOSOPHY</span>
-<h2>More than<br><em>beautiful.</em></h2>
-<p data-ar="نؤمن أن الجمال تجربة تشعرين بها، وليس مجرد نتيجة ترينها. كل تفصيلة هنا صُممت لتكون لكِ."
-data-en="We believe beauty is an experience you feel, not just a result you see. Every detail is designed for you.">
-نؤمن أن الجمال تجربة تشعرين بها، وليس مجرد نتيجة ترينها. كل تفصيلة هنا صُممت لتكون لكِ.
+<div class="container philosophy-grid">
+
+<div class="philosophy-image reveal">
+<img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=1100&q=85&auto=format&fit=crop"
+alt="Elegant salon atmosphere" loading="lazy">
+</div>
+
+<div class="reveal">
+<span class="eyebrow">THE VELORA EXPERIENCE</span>
+<h2>More than<br><em>a moment.</em></h2>
+
+<p data-ar="في عالم ڤيلورا، التفاصيل الصغيرة تصنع التجربة الكبيرة. من لحظة اختيار الخدمة إلى اللمسة الأخيرة، كل شيء مصمم بروح من الهدوء والأناقة."
+data-en="In the world of Velora, small details create memorable experiences. From choosing your service to the final touch, everything is designed with calm and elegance in mind.">
+في عالم ڤيلورا، التفاصيل الصغيرة تصنع التجربة الكبيرة. من لحظة اختيار الخدمة إلى اللمسة الأخيرة، كل شيء مصمم بروح من الهدوء والأناقة.
 </p>
+
+<a href="gallery.html" class="btn btn-outline"
+data-ar="اكتشفي عالم ڤيلورا ↗"
+data-en="Discover Velora ↗">اكتشفي عالم ڤيلورا ↗</a>
+</div>
+
 </div>
 </section>
 
+<!-- BOOKING CTA -->
 <section class="cta">
 <div class="container reveal">
-<span class="eyebrow">A MOMENT JUST FOR YOU</span>
-<h2>Make it <em>yours.</em></h2>
-<p data-ar="اختاري تجربتك المفضلة وابدئي رحلتك مع ڤيلورا."
-data-en="Choose your favorite ritual and begin your Velora journey.">
-اختاري تجربتك المفضلة وابدئي رحلتك مع ڤيلورا.
+<span class="eyebrow">YOUR BEAUTY JOURNEY</span>
+
+<h2>Your moment<br><em>starts here.</em></h2>
+
+<p data-ar="اختاري خدمتكِ المفضلة واستكشفي تجربة الحجز التوضيحية."
+data-en="Choose your favorite service and explore our demo booking experience.">
+اختاري خدمتكِ المفضلة واستكشفي تجربة الحجز التوضيحية.
 </p>
+
 <a href="booking.html" class="btn"
-data-ar="ابدئي تجربة الحجز ↗"
-data-en="Explore Demo Booking ↗">
-ابدئي تجربة الحجز ↗
-</a>
+data-ar="ابدئي الحجز ↗"
+data-en="Start Booking ↗">ابدئي الحجز ↗</a>
 </div>
 </section>
+
 </main>
 
+<!-- FOOTER -->
 <footer>
 <div class="container">
+
 <div class="footer-top">
+
 <div>
-<div class="footer-logo">VELORA<span>.</span></div>
-<p data-ar="الجمال يبدأ من شعورك."
-data-en="Beauty begins with how you feel.">
-الجمال يبدأ من شعورك.
+<img class="footer-logo" src="velora-logo.png" alt="VELORA logo">
+<p class="footer-description"
+data-ar="عالم من الجمال الهادئ والتفاصيل الراقية. مشروع تجريبي من BYTEORA."
+data-en="A world of calm beauty and refined details. A concept project by BYTEORA.">
+عالم من الجمال الهادئ والتفاصيل الراقية. مشروع تجريبي من BYTEORA.
 </p>
 </div>
+
 <div class="footer-links">
+<div>
+<strong>EXPLORE</strong>
 <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
 <a href="services.html" data-ar="الخدمات" data-en="Services">الخدمات</a>
 <a href="gallery.html" data-ar="المعرض" data-en="Gallery">المعرض</a>
 <a href="booking.html" data-ar="الحجز" data-en="Booking">الحجز</a>
 </div>
+
+<div>
+<strong>PROJECT</strong>
+<a href="showcase.html" data-ar="دراسة المشروع" data-en="Case Study">دراسة المشروع</a>
+<a href="admin.html" data-ar="لوحة التحكم التجريبية" data-en="Demo Dashboard">لوحة التحكم التجريبية</a>
 </div>
+</div>
+
+</div>
+
 <div class="footer-bottom">
-<span>© 2026 VELORA. CONCEPT WEBSITE.</span>
+<span>© 2026 VELORA — CONCEPT BRAND</span>
 <span>DESIGNED & DEVELOPED BY BYTEORA ✦</span>
 </div>
+
 </div>
 </footer>
 
@@ -652,86 +753,87 @@ data-en="Beauty begins with how you feel.">
 (function(){
 "use strict";
 
-const menu = document.getElementById("menu");
-const navlinks = document.getElementById("navlinks");
-const langButton = document.getElementById("lang");
+const $=selector=>document.querySelector(selector);
+const $$=selector=>document.querySelectorAll(selector);
 
-let language = "ar";
+let language="ar";
 
 /* MOBILE MENU */
-menu.addEventListener("click", function(){
-const opened = navlinks.classList.toggle("open");
-menu.setAttribute("aria-expanded", String(opened));
+$("#menu").addEventListener("click",()=>{
+const open=$("#navlinks").classList.toggle("open");
+$("#menu").setAttribute("aria-expanded",String(open));
 });
 
-/* LANGUAGE SWITCH */
-langButton.addEventListener("click", function(){
-language = language === "ar" ? "en" : "ar";
-
-document.documentElement.lang = language;
-document.documentElement.dir =
-language === "ar" ? "rtl" : "ltr";
-
-langButton.textContent =
-language === "ar" ? "EN" : "عربي";
-
-document.querySelectorAll("[data-ar][data-en]")
-.forEach(function(element){
-element.textContent =
-element.getAttribute("data-" + language);
+$$("#navlinks a").forEach(link=>{
+link.addEventListener("click",()=>{
+$("#navlinks").classList.remove("open");
+$("#menu").setAttribute("aria-expanded","false");
 });
 });
 
-/* FILTER SERVICES */
-const filters = document.querySelectorAll(".filter");
-const cards = document.querySelectorAll(".card");
+/* LANGUAGE */
+$("#lang").addEventListener("click",()=>{
+language=language==="ar"?"en":"ar";
 
-filters.forEach(function(button){
-button.addEventListener("click", function(){
-const selected = button.dataset.filter;
+document.documentElement.lang=language;
+document.documentElement.dir=language==="ar"?"rtl":"ltr";
 
-filters.forEach(function(item){
+$("#lang").textContent=language==="ar"?"EN":"عربي";
+
+$$("[data-ar][data-en]").forEach(element=>{
+element.textContent=element.getAttribute("data-"+language);
+});
+});
+
+/* SERVICE FILTERS */
+const filters=$$(".filter");
+const cards=$$(".service-card");
+
+filters.forEach(button=>{
+button.addEventListener("click",()=>{
+const category=button.dataset.filter;
+
+filters.forEach(item=>{
 item.classList.remove("active");
+item.setAttribute("aria-pressed","false");
 });
 
 button.classList.add("active");
+button.setAttribute("aria-pressed","true");
 
-cards.forEach(function(card){
-const show =
-selected === "all" ||
-card.dataset.category === selected;
-
-card.classList.toggle("hidden", !show);
+cards.forEach(card=>{
+card.hidden=category!=="all" &&
+card.dataset.category!==category;
 });
 });
 });
 
-/* SCROLL REVEALS */
-const revealItems = document.querySelectorAll(".reveal");
+filters.forEach(button=>{
+button.setAttribute(
+"aria-pressed",
+button.classList.contains("active")?"true":"false"
+);
+});
 
-if (
+/* SCROLL REVEAL */
+const items=$$(".reveal");
+
+if(
 "IntersectionObserver" in window &&
 !window.matchMedia("(prefers-reduced-motion: reduce)").matches
 ){
-const observer = new IntersectionObserver(
-function(entries){
-entries.forEach(function(entry){
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.add("visible");
 observer.unobserve(entry.target);
 }
 });
-},
-{threshold:0.08}
-);
+},{threshold:.08});
 
-revealItems.forEach(function(item){
-observer.observe(item);
-});
-} else {
-revealItems.forEach(function(item){
-item.classList.add("visible");
-});
+items.forEach(item=>observer.observe(item));
+}else{
+items.forEach(item=>item.classList.add("visible"));
 }
 
 })();
