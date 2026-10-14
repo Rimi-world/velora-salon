@@ -1,15 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#FAF6F0">
-<title>The Gallery | VELORA</title>
+<meta name="description" content="Explore the VELORA beauty gallery. A fictional luxury salon concept by BYTEORA.">
+<title>Gallery | VELORA</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -31,22 +31,25 @@ color:var(--dark);
 font-family:Tajawal,sans-serif;
 overflow-x:hidden
 }
-body.lock{overflow:hidden}
-button{font:inherit;cursor:pointer}
+body.modal-open{overflow:hidden}
 a{text-decoration:none;color:inherit}
-img{display:block;width:100%}
-.container{width:min(1300px,90%);margin:auto}
+button{font:inherit;cursor:pointer}
+img{display:block;max-width:100%}
+.container{width:min(1250px,90%);margin:auto}
 .eyebrow{
 font:700 11px "DM Sans",sans-serif;
-letter-spacing:.25em;
+letter-spacing:.2em;
 color:var(--pink)
 }
 .btn{
-display:inline-block;
-border:1px solid var(--dark);
-background:var(--dark);
-color:white;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:12px;
 padding:17px 28px;
+background:var(--dark);
+border:1px solid var(--dark);
+color:white;
 font-size:14px;
 font-weight:700;
 transition:.35s var(--ease)
@@ -56,111 +59,141 @@ background:var(--pink);
 border-color:var(--pink);
 transform:translateY(-3px)
 }
+.btn-outline{
+background:transparent;
+color:var(--dark)
+}
+.btn-outline:hover{color:white}
+button:focus-visible,a:focus-visible{
+outline:2px solid var(--pink);
+outline-offset:4px
+}
 .reveal{
 opacity:0;
-transform:translateY(45px);
-transition:1s var(--ease)
+transform:translateY(35px);
+transition:opacity .8s var(--ease),transform .8s var(--ease)
 }
 .reveal.visible{opacity:1;transform:none}
 
-/* NAV */
+/* HEADER */
 header{
 position:fixed;
 top:0;left:0;right:0;
 z-index:100;
-background:#FAF6F0ED;
-backdrop-filter:blur(18px);
-border-bottom:1px solid #48343918
+background:#FAF6F0F2;
+backdrop-filter:blur(16px);
+border-bottom:1px solid #4834391C
 }
 .nav{
-min-height:78px;
+min-height:88px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:20px
+gap:22px
 }
 .brand{
-font:400 30px "Playfair Display",serif;
-letter-spacing:.06em
+display:flex;
+align-items:center;
+gap:10px;
+flex-shrink:0
 }
-.brand span{color:var(--pink)}
-.navlinks{display:flex;align-items:center;gap:28px}
-.navlinks a{font-size:14px;font-weight:700}
-.navlinks a:hover{color:var(--pink)}
-.actions{display:flex;align-items:center;gap:12px}
+.brand img{
+width:82px;
+height:68px;
+object-fit:contain
+}
+.brand-name{
+font:400 23px "Playfair Display",serif;
+letter-spacing:.08em
+}
+.navlinks{
+display:flex;
+align-items:center;
+gap:25px
+}
+.navlinks a{
+font-size:13px;
+font-weight:700;
+transition:color .3s
+}
+.navlinks a:hover,
+.navlinks .current{color:var(--pink)}
+.nav-actions{
+display:flex;
+align-items:center;
+gap:12px
+}
 .lang{
-border:0;background:none;
+background:none;
+border:0;
 color:var(--dark);
 font:700 12px "DM Sans",sans-serif;
 padding:10px
 }
 .menu{
 display:none;
-border:0;background:none;
+background:none;
+border:0;
 color:var(--dark);
-font-size:26px
+font-size:27px
 }
 
 /* HERO */
 .hero{
-min-height:78svh;
+min-height:75svh;
+padding:165px 0 100px;
+position:relative;
 display:flex;
 align-items:center;
-position:relative;
-overflow:hidden;
-padding:150px 0 100px;
-isolation:isolate
+isolation:isolate;
+overflow:hidden
 }
-.hero-image{
-position:absolute;inset:0;z-index:-2;
-background:url("https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=1800&q=85&auto=format&fit=crop") center/cover;
-animation:zoom 8s ease-out both
-}
-@keyframes zoom{
-from{transform:scale(1.12)}
-to{transform:scale(1)}
+.hero-bg{
+position:absolute;
+inset:0;
+z-index:-2;
+background:url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1800&q=85&auto=format&fit=crop") center/cover
 }
 .hero:after{
 content:"";
-position:absolute;inset:0;z-index:-1;
-background:linear-gradient(90deg,#FAF6F0A0,#FAF6F0EF 70%,#FAF6F0F8)
+position:absolute;
+inset:0;
+z-index:-1;
+background:linear-gradient(90deg,#FAF6F0FA,#FAF6F0E8 60%,#FAF6F07A)
+}
+.hero-content{max-width:780px}
+.hero-mark{
+width:125px;
+height:125px;
+object-fit:contain;
+margin-bottom:15px
 }
 .hero h1{
-font:400 clamp(72px,13vw,180px)/.92 "Playfair Display",serif;
+font:400 clamp(65px,10vw,130px)/1.05 "Playfair Display",serif;
 letter-spacing:-.05em;
-margin:30px 0
+margin:18px 0
 }
-.hero h1 em{
-color:var(--pink);
-font-weight:400
-}
+.hero h1 em{color:var(--pink)}
 .hero p{
-max-width:470px;
 font-size:18px;
-line-height:2
-}
-.hero-caption{
-position:absolute;
-bottom:28px;
-left:5%;
-font:600 11px "DM Sans",sans-serif;
-letter-spacing:.15em
+line-height:2;
+max-width:550px
 }
 
 /* INTRO */
 .intro{
-padding:120px 0 65px;
-text-align:center
+text-align:center;
+padding:115px 0 40px
 }
 .intro h2{
-font:400 clamp(46px,7vw,90px)/1.15 "Playfair Display",serif;
+font:400 clamp(48px,7vw,90px)/1.1 "Playfair Display",serif;
 margin:20px 0
 }
 .intro h2 em{color:var(--pink)}
 .intro p{
-max-width:610px;
-margin:0 auto;
 color:var(--muted);
+max-width:620px;
+margin:20px auto;
 line-height:2;
 font-size:17px
 }
@@ -171,13 +204,14 @@ display:flex;
 justify-content:center;
 flex-wrap:wrap;
 gap:10px;
-margin:0 0 55px
+margin:30px auto 60px
 }
 .filter{
-border:1px solid #48343930;
+padding:13px 20px;
+border:1px solid #4834392B;
 background:transparent;
-padding:13px 25px;
 color:var(--dark);
+font-size:13px;
 font-weight:700;
 transition:.3s
 }
@@ -192,95 +226,112 @@ color:white
 .gallery-grid{
 display:grid;
 grid-template-columns:repeat(3,minmax(0,1fr));
-grid-auto-flow:row dense;
-gap:14px
+gap:17px
 }
 .gallery-card{
 position:relative;
-overflow:hidden;
-height:390px;
+display:block;
+padding:0;
 border:0;
 background:var(--blush);
-padding:0;
+width:100%;
+aspect-ratio:4/5;
+overflow:hidden;
 text-align:start;
-cursor:zoom-in
+color:white
 }
-.gallery-card.tall{height:560px}
-.gallery-card.wide{grid-column:span 2;height:560px}
+.gallery-card.wide{aspect-ratio:4/5}
 .gallery-card img{
 width:100%;
 height:100%;
 object-fit:cover;
-transition:transform 1.1s var(--ease),filter .5s
+transition:transform .85s var(--ease)
 }
-.gallery-card:hover img{
-transform:scale(1.07);
-filter:brightness(.85)
-}
+.gallery-card:hover img{transform:scale(1.07)}
 .gallery-card:after{
 content:"";
-position:absolute;inset:0;
-background:linear-gradient(transparent 60%,#24181BB3);
+position:absolute;
+inset:0;
+background:linear-gradient(transparent 55%,#2A1A22BB);
 pointer-events:none
 }
-.gallery-card .label{
+.gallery-caption{
 position:absolute;
 bottom:25px;
 right:25px;
 left:25px;
-z-index:2;
-color:white;
-display:flex;
-align-items:end;
-justify-content:space-between;
-gap:15px
+z-index:2
 }
-.gallery-card .label strong{
-font:400 27px "Playfair Display",serif
+.gallery-caption small{
+font:700 10px "DM Sans",sans-serif;
+letter-spacing:.15em;
+color:#F1CFD4
 }
-.gallery-card .label small{
-font:600 10px "DM Sans",sans-serif;
-letter-spacing:.12em
+.gallery-caption h3{
+font:400 30px "Playfair Display",serif;
+margin:10px 0 0
 }
-.gallery-card.hidden{display:none}
+.gallery-card[hidden]{display:none}
 
-/* STATEMENT */
-.statement{
-background:var(--dark);
-color:var(--cream);
-text-align:center;
-padding:145px 0
+/* FEATURE */
+.feature{
+background:var(--blush);
+padding:120px 0
 }
-.statement .symbol{
-font:400 50px "Playfair Display",serif;
-color:var(--gold)
+.feature-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:80px;
+align-items:center
 }
-.statement h2{
-font:400 clamp(55px,9vw,125px)/1.1 "Playfair Display",serif;
-margin:28px 0
+.feature-image{
+height:580px;
+overflow:hidden
 }
-.statement h2 em{color:var(--pink)}
-.statement p{
-color:#E0CBCD;
+.feature-image img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+.feature h2{
+font:400 clamp(50px,7vw,90px)/1.1 "Playfair Display",serif;
+margin:20px 0
+}
+.feature h2 em{color:var(--pink)}
+.feature p{
 font-size:17px;
-line-height:2
+line-height:2.1;
+color:var(--muted);
+margin-bottom:30px
 }
 
 /* CTA */
 .cta{
-text-align:center;
-padding:125px 0;
-background:var(--blush)
+background:var(--dark);
+color:var(--cream);
+padding:140px 0;
+text-align:center
 }
 .cta h2{
-font:400 clamp(52px,8vw,110px) "Playfair Display",serif;
-margin:20px 0
+font:400 clamp(60px,9vw,120px)/1.1 "Playfair Display",serif;
+margin:25px 0
 }
-.cta h2 em{color:var(--pink)}
+.cta h2 em{color:#DCA8B0}
 .cta p{
-color:var(--muted);
 font-size:17px;
+line-height:2;
+color:#E0CCCF;
 margin-bottom:35px
+}
+.cta .btn{
+background:var(--cream);
+color:var(--dark);
+border-color:var(--cream)
+}
+.cta .btn:hover{
+background:var(--pink);
+border-color:var(--pink);
+color:white
 }
 
 /* LIGHTBOX */
@@ -288,135 +339,153 @@ margin-bottom:35px
 position:fixed;
 inset:0;
 z-index:500;
-background:#1D1319F0;
-backdrop-filter:blur(18px);
-display:flex;
+background:#1D1419F2;
+display:none;
 align-items:center;
 justify-content:center;
-opacity:0;
-visibility:hidden;
-transition:.35s
+padding:75px 20px 30px
 }
-.lightbox.open{
-opacity:1;
-visibility:visible
+.lightbox.open{display:flex}
+.lightbox-content{
+width:min(100%,900px);
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:15px
 }
-.lightbox-image{
+.lightbox-content img{
+max-width:100%;
+max-height:70vh;
 width:auto;
-max-width:88vw;
-max-height:78svh;
-object-fit:contain;
-box-shadow:0 25px 100px #0005;
-transform:scale(.94);
-transition:.5s var(--ease)
+object-fit:contain
 }
-.lightbox.open .lightbox-image{transform:scale(1)}
+.lightbox-caption{
+color:var(--cream);
+font:400 25px "Playfair Display",serif;
+text-align:center
+}
 .lightbox-close{
 position:absolute;
-top:25px;right:30px;
-background:none;border:0;
-color:white;font-size:38px;
-z-index:3
+top:20px;
+left:25px;
+background:none;
+border:1px solid #FFFFFF70;
+color:white;
+width:45px;
+height:45px;
+font-size:25px
 }
 .lightbox-nav{
 position:absolute;
 top:50%;
 transform:translateY(-50%);
-border:1px solid #FFFFFF55;
-background:#FFFFFF18;
-color:white;
-width:55px;height:55px;
-font-size:28px;
-z-index:3
+background:#FAF6F0DD;
+color:var(--dark);
+border:0;
+width:45px;
+height:55px;
+font-size:25px
 }
-.lightbox-prev{right:25px}
-.lightbox-next{left:25px}
-.lightbox-info{
-position:absolute;
-bottom:25px;
-left:25px;right:25px;
-text-align:center;
-color:white;
-font:500 13px "DM Sans",sans-serif;
-letter-spacing:.1em
-}
+.lightbox-prev{right:20px}
+.lightbox-next{left:20px}
 
 /* FOOTER */
 footer{
-background:var(--dark);
+background:#34262A;
 color:var(--cream);
-padding:85px 0 28px
+padding:65px 0 30px
 }
 .footer-top{
 display:flex;
 justify-content:space-between;
-gap:40px
+gap:35px;
+flex-wrap:wrap;
+padding-bottom:55px
 }
 .footer-logo{
-font:400 clamp(70px,12vw,150px) "Playfair Display",serif
+width:150px;
+height:130px;
+object-fit:contain
 }
-.footer-logo span{color:var(--gold)}
-.footer-top p{color:#DDC9C9}
+.footer-description{
+max-width:330px;
+font-size:14px;
+color:#DDC8CC;
+line-height:2
+}
 .footer-links{
 display:flex;
-flex-direction:column;
-gap:18px
+gap:65px;
+flex-wrap:wrap
 }
+.footer-links div{
+display:flex;
+flex-direction:column;
+gap:16px
+}
+.footer-links strong{
+color:var(--gold);
+font:700 11px "DM Sans",sans-serif;
+letter-spacing:.14em
+}
+.footer-links a{font-size:14px}
+.footer-links a:hover{color:var(--pink)}
 .footer-bottom{
+border-top:1px solid #FFFFFF22;
+padding-top:25px;
 display:flex;
 justify-content:space-between;
+flex-wrap:wrap;
 gap:15px;
-border-top:1px solid #FFFFFF30;
-margin-top:85px;
-padding-top:25px;
-color:#DDC9C9;
+color:#CCB5B9;
 font:500 11px "DM Sans",sans-serif
 }
 
 /* RESPONSIVE */
-@media(max-width:950px){
+@media(max-width:1050px){
 .navlinks{
 display:none;
 position:absolute;
-top:78px;left:0;right:0;
-padding:30px 5%;
+top:88px;
+right:0;left:0;
 background:var(--cream);
+padding:25px 5%;
 flex-direction:column;
 align-items:stretch;
-box-shadow:0 20px 30px #48343920
+box-shadow:0 20px 35px #48343920
 }
 .navlinks.open{display:flex}
 .menu{display:block}
-.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.gallery-card.wide{grid-column:span 2}
+.feature-grid{grid-template-columns:1fr;gap:45px}
+.feature-image{height:440px}
 }
-@media(max-width:600px){
-.nav{min-height:70px}
-.navlinks{top:70px}
-.brand{font-size:25px}
+@media(max-width:650px){
+.nav{min-height:75px}
+.brand img{width:65px;height:58px}
+.brand-name{font-size:18px}
+.navlinks{top:75px}
 .nav-book{display:none}
-.hero{min-height:70svh}
-.hero h1{font-size:clamp(68px,16vw,105px)}
+.hero{min-height:65svh;padding:130px 0 75px}
+.hero-mark{width:95px;height:95px}
+.hero h1{font-size:62px}
 .hero p{font-size:16px}
-.intro{padding:90px 0 50px}
-.gallery-grid{gap:8px}
-.gallery-card{height:260px}
-.gallery-card.tall{height:360px}
-.gallery-card.wide{height:320px}
-.gallery-card .label{bottom:15px;right:13px;left:13px}
-.gallery-card .label strong{font-size:18px}
-.gallery-card .label small{font-size:8px}
-.statement,.cta{padding:95px 0}
-.lightbox-image{max-width:94vw;max-height:72svh}
-.lightbox-nav{width:42px;height:42px;font-size:22px}
-.lightbox-prev{right:8px}
-.lightbox-next{left:8px}
-.footer-top,.footer-bottom{flex-direction:column}
-.footer-logo{font-size:75px}
+.intro{padding:85px 0 30px}
+.intro h2{font-size:55px}
+.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.gallery-caption{right:12px;left:12px;bottom:15px}
+.gallery-caption h3{font-size:19px}
+.gallery-caption small{font-size:8px}
+.gallery-section{padding-bottom:90px}
+.feature,.cta{padding:90px 0}
+.feature-image{height:350px}
+.feature h2{font-size:58px}
+.lightbox-prev{right:5px}
+.lightbox-next{left:5px}
+.lightbox-nav{width:35px;height:45px}
+.footer-links{gap:35px}
 }
 @media(prefers-reduced-motion:reduce){
 *,*:before,*:after{
-animation-duration:.01ms!important;
 transition-duration:.01ms!important;
 scroll-behavior:auto!important
 }
@@ -427,207 +496,276 @@ scroll-behavior:auto!important
 
 <body>
 
+<!-- HEADER -->
 <header>
 <div class="container nav">
-<a class="brand" href="index.html">VELORA<span>.</span></a>
+
+<a href="index.html" class="brand" aria-label="VELORA Home">
+<img src="velora-logo.png" alt="VELORA logo">
+<span class="brand-name">VELORA</span>
+</a>
 
 <nav class="navlinks" id="navlinks">
 <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+<a href="index.html#about" data-ar="عن ڤيلورا" data-en="About">عن ڤيلورا</a>
 <a href="services.html" data-ar="الخدمات" data-en="Services">الخدمات</a>
-<a href="gallery.html" data-ar="المعرض" data-en="Gallery">المعرض</a>
+<a href="gallery.html" class="current" data-ar="المعرض" data-en="Gallery">المعرض</a>
 <a href="booking.html" data-ar="الحجز" data-en="Booking">الحجز</a>
 </nav>
 
-<div class="actions">
+<div class="nav-actions">
 <button class="lang" id="lang">EN</button>
-<a class="btn nav-book" href="booking.html"
-data-ar="احجزي الآن" data-en="Book Now">احجزي الآن</a>
-<button class="menu" id="menu" aria-label="القائمة">☰</button>
+<a href="booking.html" class="btn nav-book"
+data-ar="احجزي موعدك ↗"
+data-en="Book Now ↗">احجزي موعدك ↗</a>
+<button class="menu" id="menu" aria-label="القائمة" aria-expanded="false">☰</button>
 </div>
+
 </div>
 </header>
 
 <main>
 
+<!-- HERO -->
 <section class="hero">
-<div class="hero-image"></div>
-<div class="container">
-<span class="eyebrow">MOMENTS AT VELORA</span>
-<h1>The<br><em>Gallery.</em></h1>
-<p data-ar="كل صورة تحمل إحساسًا، وكل تفصيلة تروي حكاية. اكتشفي عالم ڤيلورا من زاوية مختلفة."
-data-en="Every image holds a feeling, every detail tells a story. Discover Velora from a different perspective.">
-كل صورة تحمل إحساسًا، وكل تفصيلة تروي حكاية. اكتشفي عالم ڤيلورا من زاوية مختلفة.
+<div class="hero-bg"></div>
+
+<div class="container hero-content">
+<img class="hero-mark" src="velora-logo.png" alt="VELORA">
+
+<span class="eyebrow">A WORLD OF VELORA</span>
+
+<h1>Beauty in<br><em>every frame.</em></h1>
+
+<p data-ar="تفاصيل ناعمة، لمسات أنيقة، ولحظات تعبّر عن عالم ڤيلورا."
+data-en="Soft details, elegant touches and moments that capture the world of Velora.">
+تفاصيل ناعمة، لمسات أنيقة، ولحظات تعبّر عن عالم ڤيلورا.
 </p>
-<a class="btn" href="#gallery"
-data-ar="استكشفي المعرض ↗"
-data-en="Explore Gallery ↗">استكشفي المعرض ↗</a>
+
+<a href="#gallery" class="btn"
+data-ar="استكشفي المعرض ↓"
+data-en="Explore Gallery ↓">استكشفي المعرض ↓</a>
 </div>
-<span class="hero-caption">THE VELORA VISUAL DIARY / 2026</span>
 </section>
 
+<!-- INTRO -->
 <section class="intro" id="gallery">
 <div class="container reveal">
-<span class="eyebrow">A VISUAL LOVE LETTER</span>
-<h2>Beauty in <em>every frame.</em></h2>
-<p data-ar="مساحات هادئة، تفاصيل ناعمة، ولحظات من الجمال. مجموعة صور مختارة لتجسّد روح ڤيلورا."
-data-en="Calm spaces, delicate details, and beautiful moments. A curated visual collection expressing the spirit of Velora.">
-مساحات هادئة، تفاصيل ناعمة، ولحظات من الجمال. مجموعة صور مختارة لتجسّد روح ڤيلورا.
+<span class="eyebrow">THE VELORA EDIT</span>
+
+<h2>Moments of <em>beauty.</em></h2>
+
+<p data-ar="مجموعة من الصور المختارة لتعكس الأجواء الهادئة والهوية الراقية لڤيلورا."
+data-en="A curated collection of imagery reflecting Velora's calm atmosphere and refined identity.">
+مجموعة من الصور المختارة لتعكس الأجواء الهادئة والهوية الراقية لڤيلورا.
 </p>
 </div>
 </section>
 
+<!-- FILTERS AND GALLERY -->
 <section class="gallery-section">
 <div class="container">
 
-<div class="filters reveal">
+<div class="filters" role="group" aria-label="Gallery categories">
 <button class="filter active" data-filter="all"
 data-ar="الكل" data-en="All">الكل</button>
-<button class="filter" data-filter="space"
-data-ar="المكان" data-en="The Space">المكان</button>
 <button class="filter" data-filter="hair"
 data-ar="الشعر" data-en="Hair">الشعر</button>
-<button class="filter" data-filter="beauty"
-data-ar="الجمال" data-en="Beauty">الجمال</button>
-<button class="filter" data-filter="details"
-data-ar="التفاصيل" data-en="Details">التفاصيل</button>
+<button class="filter" data-filter="nails"
+data-ar="الأظافر" data-en="Nails">الأظافر</button>
+<button class="filter" data-filter="skin"
+data-ar="البشرة" data-en="Skin">البشرة</button>
+<button class="filter" data-filter="makeup"
+data-ar="المكياج" data-en="Makeup">المكياج</button>
+<button class="filter" data-filter="space"
+data-ar="الأجواء" data-en="The Space">الأجواء</button>
 </div>
 
-<div class="gallery-grid" id="galleryGrid">
+<div class="gallery-grid">
 
-<button class="gallery-card tall reveal" data-category="space"
-data-title="The Velora Space">
-<img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=1000&q=85&auto=format&fit=crop"
-alt="Elegant salon interior" loading="lazy">
-<span class="label"><strong>The Space</strong><small>01 / VELORA</small></span>
+<button class="gallery-card reveal" data-category="hair" type="button">
+<img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=900&q=85&auto=format&fit=crop"
+alt="Hair artistry" loading="lazy">
+<div class="gallery-caption">
+<small>HAIR / 01</small>
+<h3>Hair Artistry</h3>
+</div>
 </button>
 
-<button class="gallery-card reveal" data-category="hair"
-data-title="Hair Artistry">
-<img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1000&q=85&auto=format&fit=crop"
-alt="Hair styling" loading="lazy">
-<span class="label"><strong>Hair Artistry</strong><small>02 / VELORA</small></span>
+<button class="gallery-card reveal" data-category="nails" type="button">
+<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&q=85&auto=format&fit=crop"
+alt="Nail atelier" loading="lazy">
+<div class="gallery-caption">
+<small>NAILS / 02</small>
+<h3>Nail Atelier</h3>
+</div>
 </button>
 
-<button class="gallery-card reveal" data-category="beauty"
-data-title="The Beauty Ritual">
-<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=1000&q=85&auto=format&fit=crop"
-alt="Beauty experience" loading="lazy">
-<span class="label"><strong>Beauty Ritual</strong><small>03 / VELORA</small></span>
+<button class="gallery-card reveal" data-category="skin" type="button">
+<img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&q=85&auto=format&fit=crop"
+alt="Skincare ritual" loading="lazy">
+<div class="gallery-caption">
+<small>SKIN / 03</small>
+<h3>Skin Rituals</h3>
+</div>
 </button>
 
-<button class="gallery-card wide reveal" data-category="space"
-data-title="A World of Calm">
-<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1400&q=85&auto=format&fit=crop"
-alt="Luxury salon space" loading="lazy">
-<span class="label"><strong>A World of Calm</strong><small>04 / VELORA</small></span>
-</button>
-
-<button class="gallery-card tall reveal" data-category="details"
-data-title="The Little Details">
-<img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=1000&q=85&auto=format&fit=crop"
-alt="Beauty products" loading="lazy">
-<span class="label"><strong>The Details</strong><small>05 / VELORA</small></span>
-</button>
-
-<button class="gallery-card reveal" data-category="beauty"
-data-title="Skin Rituals">
-<img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1000&q=85&auto=format&fit=crop"
-alt="Skin treatment" loading="lazy">
-<span class="label"><strong>Skin Rituals</strong><small>06 / VELORA</small></span>
-</button>
-
-<button class="gallery-card reveal" data-category="details"
-data-title="Nail Atelier">
-<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1000&q=85&auto=format&fit=crop"
-alt="Nail styling" loading="lazy">
-<span class="label"><strong>Nail Atelier</strong><small>07 / VELORA</small></span>
-</button>
-
-<button class="gallery-card wide reveal" data-category="beauty"
-data-title="Makeup Studio">
-<img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1400&q=85&auto=format&fit=crop"
+<button class="gallery-card reveal" data-category="makeup" type="button">
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=900&q=85&auto=format&fit=crop"
 alt="Makeup artistry" loading="lazy">
-<span class="label"><strong>Makeup Studio</strong><small>08 / VELORA</small></span>
+<div class="gallery-caption">
+<small>MAKEUP / 04</small>
+<h3>Makeup Studio</h3>
+</div>
 </button>
 
-<button class="gallery-card reveal" data-category="hair"
-data-title="The Styling Experience">
-<img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1000&q=85&auto=format&fit=crop"
+<button class="gallery-card reveal" data-category="space" type="button">
+<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=85&auto=format&fit=crop"
+alt="Salon interior" loading="lazy">
+<div class="gallery-caption">
+<small>THE SPACE / 05</small>
+<h3>Quiet Luxury</h3>
+</div>
+</button>
+
+<button class="gallery-card reveal" data-category="makeup" type="button">
+<img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=900&q=85&auto=format&fit=crop"
+alt="Makeup details" loading="lazy">
+<div class="gallery-caption">
+<small>MAKEUP / 06</small>
+<h3>Soft Glam</h3>
+</div>
+</button>
+
+<button class="gallery-card reveal" data-category="space" type="button">
+<img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=900&q=85&auto=format&fit=crop"
+alt="Beauty studio" loading="lazy">
+<div class="gallery-caption">
+<small>THE SPACE / 07</small>
+<h3>The Experience</h3>
+</div>
+</button>
+
+<button class="gallery-card reveal" data-category="hair" type="button">
+<img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=900&q=85&auto=format&fit=crop"
 alt="Hair salon" loading="lazy">
-<span class="label"><strong>The Experience</strong><small>09 / VELORA</small></span>
+<div class="gallery-caption">
+<small>HAIR / 08</small>
+<h3>Signature Style</h3>
+</div>
+</button>
+
+<button class="gallery-card reveal" data-category="skin" type="button">
+<img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=900&q=85&auto=format&fit=crop"
+alt="Skincare products" loading="lazy">
+<div class="gallery-caption">
+<small>SKIN / 09</small>
+<h3>Pure Rituals</h3>
+</div>
 </button>
 
 </div>
 </div>
 </section>
 
-<section class="statement">
-<div class="container reveal">
-<div class="symbol">✦</div>
-<span class="eyebrow">THE ART OF BEING YOU</span>
-<h2>Beautifully<br><em>you.</em></h2>
-<p data-ar="في ڤيلورا، نحتفي بكل لحظة تعكس جمالكِ الخاص."
-data-en="At Velora, we celebrate every moment that reflects your unique beauty.">
-في ڤيلورا، نحتفي بكل لحظة تعكس جمالكِ الخاص.
+<!-- FEATURE -->
+<section class="feature">
+<div class="container feature-grid">
+
+<div class="feature-image reveal">
+<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1100&q=85&auto=format&fit=crop"
+alt="VELORA-inspired beauty space" loading="lazy">
+</div>
+
+<div class="reveal">
+<span class="eyebrow">BEYOND THE IMAGE</span>
+
+<h2>A feeling<br><em>worth keeping.</em></h2>
+
+<p data-ar="ڤيلورا ليست مجرد إطلالة جميلة، بل إحساس بالراحة والثقة والاهتمام بالتفاصيل."
+data-en="Velora is more than a beautiful look. It's a feeling of calm, confidence and care in every detail.">
+ڤيلورا ليست مجرد إطلالة جميلة، بل إحساس بالراحة والثقة والاهتمام بالتفاصيل.
 </p>
+
+<a href="services.html" class="btn btn-outline"
+data-ar="اكتشفي خدماتنا ↗"
+data-en="Explore Services ↗">اكتشفي خدماتنا ↗</a>
+</div>
+
 </div>
 </section>
 
+<!-- CTA -->
 <section class="cta">
 <div class="container reveal">
 <span class="eyebrow">YOUR MOMENT AWAITS</span>
-<h2>Be part of <em>Velora.</em></h2>
-<p data-ar="اكتشفي تجربة الحجز الخاصة بعالم ڤيلورا."
-data-en="Discover the Velora booking experience.">
-اكتشفي تجربة الحجز الخاصة بعالم ڤيلورا.
+
+<h2>Step into<br><em>your moment.</em></h2>
+
+<p data-ar="اختاري تجربتكِ المفضلة واستكشفي الحجز التوضيحي."
+data-en="Choose your favorite experience and explore our demo booking.">
+اختاري تجربتكِ المفضلة واستكشفي الحجز التوضيحي.
 </p>
+
 <a href="booking.html" class="btn"
-data-ar="ابدئي تجربتك ↗"
-data-en="Begin Your Journey ↗">ابدئي تجربتك ↗</a>
+data-ar="ابدئي الحجز ↗"
+data-en="Start Booking ↗">ابدئي الحجز ↗</a>
 </div>
 </section>
 
 </main>
 
-<!-- INTERACTIVE LIGHTBOX -->
-<div class="lightbox" id="lightbox"
-role="dialog" aria-modal="true" aria-label="معرض الصور">
-<button class="lightbox-close" id="lightboxClose"
-aria-label="إغلاق">×</button>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image" aria-hidden="true">
+<button class="lightbox-close" id="closeLightbox" aria-label="Close image">×</button>
+<button class="lightbox-nav lightbox-prev" id="prevImage" aria-label="Previous image">‹</button>
 
-<button class="lightbox-nav lightbox-prev" id="prev"
-aria-label="الصورة السابقة">‹</button>
-
-<img class="lightbox-image" id="lightboxImage"
-src="" alt="Gallery photograph">
-
-<button class="lightbox-nav lightbox-next" id="next"
-aria-label="الصورة التالية">›</button>
-
-<div class="lightbox-info" id="lightboxInfo"></div>
+<div class="lightbox-content">
+<img id="lightboxImage" src="" alt="">
+<div class="lightbox-caption" id="lightboxCaption"></div>
 </div>
 
+<button class="lightbox-nav lightbox-next" id="nextImage" aria-label="Next image">›</button>
+</div>
+
+<!-- FOOTER -->
 <footer>
 <div class="container">
+
 <div class="footer-top">
+
 <div>
-<div class="footer-logo">VELORA<span>.</span></div>
-<p data-ar="لحظات تستحق أن تُحكى."
-data-en="Moments worth remembering.">
-لحظات تستحق أن تُحكى.
+<img class="footer-logo" src="velora-logo.png" alt="VELORA logo">
+<p class="footer-description"
+data-ar="عالم من الجمال الهادئ والتفاصيل الراقية. مشروع تجريبي من BYTEORA."
+data-en="A world of calm beauty and refined details. A concept project by BYTEORA.">
+عالم من الجمال الهادئ والتفاصيل الراقية. مشروع تجريبي من BYTEORA.
 </p>
 </div>
+
 <div class="footer-links">
+<div>
+<strong>EXPLORE</strong>
 <a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
 <a href="services.html" data-ar="الخدمات" data-en="Services">الخدمات</a>
 <a href="gallery.html" data-ar="المعرض" data-en="Gallery">المعرض</a>
 <a href="booking.html" data-ar="الحجز" data-en="Booking">الحجز</a>
 </div>
+
+<div>
+<strong>PROJECT</strong>
+<a href="showcase.html" data-ar="دراسة المشروع" data-en="Case Study">دراسة المشروع</a>
+<a href="admin.html" data-ar="لوحة التحكم التجريبية" data-en="Demo Dashboard">لوحة التحكم التجريبية</a>
 </div>
+</div>
+
+</div>
+
 <div class="footer-bottom">
-<span>© 2026 VELORA. CONCEPT WEBSITE.</span>
+<span>© 2026 VELORA — CONCEPT BRAND</span>
 <span>DESIGNED & DEVELOPED BY BYTEORA ✦</span>
 </div>
+
 </div>
 </footer>
 
@@ -640,49 +778,57 @@ const $$=selector=>document.querySelectorAll(selector);
 
 let language="ar";
 
-/* MOBILE NAVIGATION */
+/* MOBILE MENU */
 $("#menu").addEventListener("click",()=>{
-const opened=$("#navlinks").classList.toggle("open");
-$("#menu").setAttribute("aria-expanded",String(opened));
+const open=$("#navlinks").classList.toggle("open");
+$("#menu").setAttribute("aria-expanded",String(open));
 });
 
-/* LANGUAGE */
+$$("#navlinks a").forEach(link=>{
+link.addEventListener("click",()=>{
+$("#navlinks").classList.remove("open");
+$("#menu").setAttribute("aria-expanded","false");
+});
+});
+
+/* LANGUAGE SWITCH */
 $("#lang").addEventListener("click",()=>{
 language=language==="ar"?"en":"ar";
 
 document.documentElement.lang=language;
-document.documentElement.dir=
-language==="ar"?"rtl":"ltr";
+document.documentElement.dir=language==="ar"?"rtl":"ltr";
 
-$("#lang").textContent=
-language==="ar"?"EN":"عربي";
+$("#lang").textContent=language==="ar"?"EN":"عربي";
 
 $$("[data-ar][data-en]").forEach(element=>{
-element.textContent=
-element.getAttribute("data-"+language);
+element.textContent=element.getAttribute("data-"+language);
 });
 });
 
-/* GALLERY FILTER */
+/* FILTER GALLERY */
 const filters=$$(".filter");
-const cards=$$(".gallery-card");
+const cards=Array.from($$(".gallery-card"));
 
 filters.forEach(button=>{
+button.setAttribute(
+"aria-pressed",
+button.classList.contains("active")?"true":"false"
+);
+
 button.addEventListener("click",()=>{
 const category=button.dataset.filter;
 
 filters.forEach(item=>{
 item.classList.remove("active");
+item.setAttribute("aria-pressed","false");
 });
 
 button.classList.add("active");
+button.setAttribute("aria-pressed","true");
 
 cards.forEach(card=>{
-const visible=
-category==="all" ||
-card.dataset.category===category;
-
-card.classList.toggle("hidden",!visible);
+card.hidden=category!=="all" &&
+card.dataset.category!==category;
 });
 });
 });
@@ -690,105 +836,103 @@ card.classList.toggle("hidden",!visible);
 /* LIGHTBOX */
 const lightbox=$("#lightbox");
 const lightboxImage=$("#lightboxImage");
-const lightboxInfo=$("#lightboxInfo");
+const lightboxCaption=$("#lightboxCaption");
 
 let currentIndex=0;
-let visibleCards=[];
+let previousFocus=null;
 
-function refreshVisibleCards(){
-visibleCards=Array.from(cards).filter(card=>{
-return !card.classList.contains("hidden");
-});
+function visibleCards(){
+return cards.filter(card=>!card.hidden);
 }
 
-function showImage(index){
-if(!visibleCards.length)return;
+function displayImage(index){
+const visible=visibleCards();
 
-currentIndex=(
-index+visibleCards.length
-)%visibleCards.length;
+if(!visible.length)return;
 
-const card=visibleCards[currentIndex];
+currentIndex=(index+visible.length)%visible.length;
+
+const card=visible[currentIndex];
 const image=card.querySelector("img");
 
 lightboxImage.src=image.src;
 lightboxImage.alt=image.alt;
-
-lightboxInfo.textContent=
-card.dataset.title+
-" — "+
-String(currentIndex+1).padStart(2,"0")+
-" / "+
-String(visibleCards.length).padStart(2,"0");
+lightboxCaption.textContent=card.querySelector("h3").textContent;
 }
 
 function openLightbox(card){
-refreshVisibleCards();
-currentIndex=visibleCards.indexOf(card);
+const visible=visibleCards();
 
-if(currentIndex<0)return;
+previousFocus=document.activeElement;
 
-showImage(currentIndex);
+displayImage(visible.indexOf(card));
 
 lightbox.classList.add("open");
-document.body.classList.add("lock");
+lightbox.setAttribute("aria-hidden","false");
+document.body.classList.add("modal-open");
 
-$("#lightboxClose").focus();
+$("#closeLightbox").focus();
 }
 
 function closeLightbox(){
 lightbox.classList.remove("open");
-document.body.classList.remove("lock");
+lightbox.setAttribute("aria-hidden","true");
+document.body.classList.remove("modal-open");
+
+lightboxImage.removeAttribute("src");
+
+if(previousFocus && previousFocus.isConnected){
+previousFocus.focus();
+}
 }
 
 cards.forEach(card=>{
-card.addEventListener("click",()=>{
-openLightbox(card);
-});
+card.addEventListener("click",()=>openLightbox(card));
 });
 
-$("#lightboxClose").addEventListener("click",closeLightbox);
+$("#closeLightbox").addEventListener("click",closeLightbox);
 
-$("#prev").addEventListener("click",()=>{
-showImage(currentIndex-1);
+$("#prevImage").addEventListener("click",()=>{
+displayImage(currentIndex-1);
 });
 
-$("#next").addEventListener("click",()=>{
-showImage(currentIndex+1);
+$("#nextImage").addEventListener("click",()=>{
+displayImage(currentIndex+1);
 });
 
 lightbox.addEventListener("click",event=>{
-if(event.target===lightbox){
-closeLightbox();
-}
+if(event.target===lightbox)closeLightbox();
 });
 
 document.addEventListener("keydown",event=>{
 if(!lightbox.classList.contains("open"))return;
 
 if(event.key==="Escape")closeLightbox();
-if(event.key==="ArrowLeft")showImage(currentIndex+1);
-if(event.key==="ArrowRight")showImage(currentIndex-1);
+if(event.key==="ArrowLeft")displayImage(currentIndex+1);
+if(event.key==="ArrowRight")displayImage(currentIndex-1);
+
+if(event.key==="Tab"){
+const focusable=[
+$("#closeLightbox"),
+$("#prevImage"),
+$("#nextImage")
+];
+
+const first=focusable[0];
+const last=focusable[focusable.length-1];
+
+if(event.shiftKey && document.activeElement===first){
+event.preventDefault();
+last.focus();
+}else if(!event.shiftKey && document.activeElement===last){
+event.preventDefault();
+first.focus();
+}
+}
 });
 
-/* SWIPE ON MOBILE */
-let touchStartX=0;
-
-lightbox.addEventListener("touchstart",event=>{
-touchStartX=event.changedTouches[0].screenX;
-},{passive:true});
-
-lightbox.addEventListener("touchend",event=>{
-const distance=
-event.changedTouches[0].screenX-touchStartX;
-
-if(Math.abs(distance)>55){
-showImage(currentIndex+(distance>0?-1:1));
-}
-},{passive:true});
-
-/* SCROLL REVEALS */
-const revealItems=$$(".reveal");
+/* SCROLL REVEAL */
+const items=$$(".reveal");
 
 if(
 "IntersectionObserver" in window &&
@@ -803,9 +947,9 @@ observer.unobserve(entry.target);
 });
 },{threshold:.08});
 
-revealItems.forEach(item=>observer.observe(item));
+items.forEach(item=>observer.observe(item));
 }else{
-revealItems.forEach(item=>item.classList.add("visible"));
+items.forEach(item=>item.classList.add("visible"));
 }
 
 })();
